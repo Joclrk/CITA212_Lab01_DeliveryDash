@@ -19,18 +19,19 @@ public class Driver : MonoBehaviour
         if (Keyboard.current.wKey.isPressed)
         {
             Cspeed = 1f;
+            if (Keyboard.current.dKey.isPressed)
+            {
+                Csteer = -1f;
+            }
+            if (Keyboard.current.aKey.isPressed)
+            {
+                Csteer = 1f;
+            }
         }
-        if (Keyboard.current.dKey.isPressed)
-        {
-            Csteer = -1f;
-        }
-        if (Keyboard.current.aKey.isPressed)
-        {
-            Csteer = 1f;
-        }
+
         if (Keyboard.current.sKey.isPressed)
         {
-            Cspeed = 0f;
+            Cspeed = -1f;
         }
         //Calculated variable to make editing easier at a later time
         float spdAmount = speed * Cspeed * Time.deltaTime;
