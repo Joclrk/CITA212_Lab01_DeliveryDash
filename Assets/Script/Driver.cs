@@ -5,9 +5,6 @@ public class Driver : MonoBehaviour
 {
     [SerializeField] float steer = 20f;
     [SerializeField] float speed = 5f;
-    //void Start() useless for now but maybe used later.
-    //{
-    //}
     void Update()
     {
         //Everchanging variables C = Changing variable
@@ -19,14 +16,14 @@ public class Driver : MonoBehaviour
         if (Keyboard.current.wKey.isPressed)
         {
             Cspeed = 1f;
-            if (Keyboard.current.dKey.isPressed)
-            {
-                Csteer = -1f;
-            }
-            if (Keyboard.current.aKey.isPressed)
-            {
-                Csteer = 1f;
-            }
+        }
+        if (Keyboard.current.dKey.isPressed)
+        {
+            Csteer = -1f;
+        }
+        if (Keyboard.current.aKey.isPressed)
+        {
+            Csteer = 1f;
         }
 
         if (Keyboard.current.sKey.isPressed)
