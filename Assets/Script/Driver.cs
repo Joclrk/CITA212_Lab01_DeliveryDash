@@ -7,12 +7,16 @@ public class Driver : MonoBehaviour
     [SerializeField] float Steer = 200f;
     [SerializeField] float CurrentSpeed = 10f;
     [SerializeField] float BoostSpeed = 20f;
+
+    [SerializeField] float BadSpeed = 10f;
     [SerializeField] float BaseSpeed = 10f;
     [SerializeField] TMP_Text BoostText;
+    [SerializeField] TMP_Text BadText;
 
     void Start() 
     {
         BoostText.gameObject.SetActive(false);
+        BadText.gameObject.SetActive(false);
     }
     void OnTriggerEnter2D(Collider2D Collision)
     {
@@ -21,12 +25,24 @@ public class Driver : MonoBehaviour
             CurrentSpeed = BoostSpeed;
             BoostText.gameObject.SetActive(true);
             Destroy(Collision.gameObject);
+            BadText.gameObject.SetActive(false);
+        }
+
+        if (Collision.CompareTag("Bad"))
+        {
+
+            CurrentSpeed = BadSpeed;
+            BadText.gameObject.SetActive(true);
+            Destroy(Collision.gameObject);
+            BoostText.gameObject.SetActive(false);
         }
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         CurrentSpeed = BaseSpeed;
         BoostText.gameObject.SetActive(false);
+        BadText.gameObject.SetActive(false);
     }
 
     void Update()
